@@ -108,12 +108,12 @@ h1, h2 {
 	margin-top: -20px;
 	box-shadow: 0 0 5px 1px black;
 }
-.lb-lightbox-nav:hover {
-	background: #383;
-}
 .lb-lightbox-nav:focus {
 	background: #3a3;
 	outline: none;
+}
+.lb-lightbox-nav:hover {
+	background: #383;
 }
 .lb-lightbox-nav::-moz-focus-inner {
 	border:0;

@@ -8,16 +8,16 @@
 	// Handle browsers that dispatch a lot of window resize events with requestAnimationFrame
 	(function() {
 		var running = false;
-        window.addEventListener("resize", function() {
-        	if (running) { return; }
-            running = true;
-            requestAnimationFrame(function() {
-            	if (_lightbox && _lightbox.visible) {
-	            	setLightboxImageSize();
-	            }
-                running = false;
-            });
-        });
+		window.addEventListener("resize", function() {
+			if (running) { return; }
+			running = true;
+			requestAnimationFrame(function() {
+				if (_lightbox && _lightbox.visible) {
+					setLightboxImageSize();
+				}
+				running = false;
+			});
+		});
 	})();
 
 	// Render (or refresh) an IMG tag
@@ -131,6 +131,7 @@
 		if (_lightbox) {
 			var item = _images[_lightbox.idx];
 			_lightbox.$titleText.nodeValue = item.title || "";
+			_lightbox.$imgAnchor.setAttribute("href", item.image.url);
 			_lightbox.$img.classList.add("loading");
 			setLightboxImage();
 			setLightboxNav(_lightbox.$nav, _lightbox.idx);
@@ -220,6 +221,12 @@
 			imgDom.className = "lb-image";
 			imgDom.setAttribute("aria-labelledby",titleId);
 
+			var imgAnchor = document.createElement("a");
+			imgAnchor.className = "lb-image-link";
+			imgAnchor.setAttribute("target", "_blank");
+
+			imgAnchor.appendChild(imgDom);
+
 			var nav = renderLightboxNav();
 
 			nav.prev.addEventListener("click", function(event) {
@@ -230,7 +237,7 @@
 			});
 
 			boxDom.appendChild(titleDom);
-			boxDom.appendChild(imgDom);
+			boxDom.appendChild(imgAnchor);
 			boxDom.appendChild(nav.prev);
 			boxDom.appendChild(nav.next);
 
@@ -242,6 +249,7 @@
 				$nav: nav,
 				$titleText: titleText,
 				$img: imgDom,
+				$imgAnchor: imgAnchor,
 				idx: idx,
 				visible: false
 			}
