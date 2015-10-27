@@ -1,10 +1,24 @@
-html {
+html, body {
 	padding: 0;
 	margin: 0;
 }
+
+html {
+	height: 100%;
+}
+
 body {
-	margin: 20px;
-	padding: 0;
+	min-height: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1, h2 {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.main {
+	overflow: auto;
+	padding: 20px;
 }
 
 #lb-lightbox {
@@ -14,9 +28,19 @@ body {
 	left: 50%; top: 50%;
 	transform: translate(-50%,-50%);
 }
+#lb-overlay {
+	position: fixed;
+	top: 0; bottom: 0; left: 0; right: 0;
+	background: #888;
+	opacity: 0.5;
+}
+#lb-list {
+	margin: 10px 0;
+	padding: 0;
+}
 .image-list-item {
 	display: inline-block;
-	border: 1px solid #333;
+	vertical-align: middle;
 	margin: 10px;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
@@ -24,24 +48,36 @@ body {
 .image-list-item.loaded {
 	opacity: 1;
 }
-.image-list-item:hover, .image-list-item:focus {
-	outline: none;
-	box-shadow: 0 0 2px 1px black;
-}
 .image-list-item img {
 	display: block;
 }
+.image-list-link {
+	display: block;
+	border: 1px solid #333;
+}
+.image-list-link:hover, .image-list-link:focus {
+	outline: none;
+	box-shadow: 0 0 2px 1px black;
+}
 .lb-title {
 	display: block;
+	position: absolute;
+	box-sizing: border-box;
 	background: #333;
-	color: white;
-	position: relative;
-	padding: 5px;
+    color: white;
+    display: block;
+    line-height: 20px;
+    top: 0; left: 0; right: 0;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .lb-image {
 	display: block;
 	opacity: 1;
 	transition: all 0.5s ease-in-out;
+	margin-top: 30px; /* leave space for titlebar */
 }
 .lb-image.loading {
 	opacity: 0.1;
@@ -52,6 +88,13 @@ body {
 	border: none;
 	background: transparent;
 	color: white;
+	font-size: 0;
+	opacity: 0;
+}
+.lb-lightbox-close:focus {
+	opacity: 1;
+	font-size: 16px;
+	background: black;
 }
 .lb-lightbox-nav {
 	background: #333;
@@ -71,6 +114,9 @@ body {
 .lb-lightbox-nav:focus {
 	background: #3a3;
 	outline: none;
+}
+.lb-lightbox-nav::-moz-focus-inner {
+	border:0;
 }
 .lb-lightbox-nav.disabled {
 	display: none;

@@ -1,3 +1,5 @@
+// Fetch interesting photos from Flickr.
+// Please ignore the client key below. It's not for you to use. It's for me to use.
 (function(exports, utils){
 	var clientKey = "3e763b70fb7836e9480c58a956a9a92d";
 
@@ -31,7 +33,7 @@
 						}
 						options.complete(xlatedPhotos);
 					} else {
-						// bad
+						options.error("Flickr told us something we didn't understand.");
 					}
 				}
 			});

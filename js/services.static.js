@@ -1,3 +1,4 @@
+// Little static service to get a couple imgur images.
 (function(exports) {
 	var static = {
 		getList: function(options) {

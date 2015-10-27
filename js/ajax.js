@@ -8,15 +8,12 @@
 				options.complete && options.complete(xhr.response);
 			}
 			xhr.onerror = function() {
-				// bad
+				options.error && options.error("Flickr doesn't want to talk to us right now. Try again later.");
 			}
 
 			xhr.open("GET",url);
 			xhr.responseType = "json";
 			xhr.send();
-		},
-		post: function(url, options) {
-
 		}
 	};
 })(utils);

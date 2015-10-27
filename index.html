@@ -7,14 +7,15 @@
 		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
-		<h1>Super awesome image lightbox</h1>
-		<p>todo: hook up window.resize, keyboard nav, error handling</p>
-		<p>Click on one of the images to embiggen.</p>
-		<div id="lb-list"></div>
+		<div class="main">
+			<h1>Super awesome image lightbox</h1>
+			<p>Here are some interesting images from Flickr.</p>
+			<p>Click on one of the images to embiggen. Use the left/right arrow keys to go back and forward. Or click on the buttons. Or tap the buttons with your finger. You can try all sorts of things. Some of them will work.</p>
+			<ul id="lb-list"></ul>
+		</div>
 		<script>var utils = {}, services = {};</script>
 		<!-- in a real app we'd take the time to concat/minify these -->
 		<script src="js/ajax.js"></script>
-		<script src="js/services.static.js"></script>
 		<script src="js/services.flickr.js"></script>
 		<script src="js/app.js"></script>
 	</body>
