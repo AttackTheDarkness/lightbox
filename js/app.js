@@ -132,7 +132,9 @@
 			var item = _images[_lightbox.idx];
 			_lightbox.$titleText.nodeValue = item.title || "";
 			_lightbox.$imgAnchor.setAttribute("href", item.image.url);
-			_lightbox.$img.classList.add("loading");
+			if (_lightbox.$img.getAttribute("src") !== item.image.url) {
+				_lightbox.$img.classList.add("loading");
+			}
 			setLightboxImage();
 			setLightboxNav(_lightbox.$nav, _lightbox.idx);
 		}
